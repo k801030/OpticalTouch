@@ -37,8 +37,8 @@ namespace OpticalTouch
             // clear all points
             chart.Series[0].Points.Clear();
             // Simulate adding new data points
-            int newY = random.Next(0, 5000);
-            for(int i=0;i<pointIndex;i++)
+            int newY = random.Next(0, 255);
+            for(int i=0;i<500;i++)
                 chart.Series[0].Points.AddXY(i, newY);
 
 

@@ -2,6 +2,9 @@
 
 namespace OpticalTouch
 {
+
+
+
     class RealtimeChart
     {
         private Chart chart = null;
@@ -9,6 +12,11 @@ namespace OpticalTouch
         private int chartHeight = 480;
         private string nameAxisX = "X";
         private string nameAxisY = "Y";
+
+        const int intensityMin = 0;
+        const int intensityMax = 255;
+        const int pixelMin = 0;
+        const int pixelMax = 500;
 
         public RealtimeChart()
         {
@@ -37,14 +45,18 @@ namespace OpticalTouch
             ctArea.AxisX.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             ctArea.AxisX.MajorGrid.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             ctArea.AxisX.MinorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            ctArea.AxisX.Maximum = pixelMax;
+            ctArea.AxisX.Minimum = pixelMin;
             ctArea.AxisX.Title = nameAxisX;
+
             ctArea.AxisY.IsLabelAutoFit = false;
             ctArea.AxisY.LabelStyle.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Bold);
             ctArea.AxisY.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             ctArea.AxisY.MajorGrid.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            ctArea.AxisY.Maximum = 5000D;
-            ctArea.AxisY.Minimum = 0D;
+            ctArea.AxisY.Maximum = intensityMax;
+            ctArea.AxisY.Minimum = intensityMin;
             ctArea.AxisY.Title = nameAxisY;
+
             ctArea.BackColor = System.Drawing.Color.OldLace;
             ctArea.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.TopBottom;
             ctArea.BackSecondaryColor = System.Drawing.Color.White;

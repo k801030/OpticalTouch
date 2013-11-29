@@ -19,4 +19,6 @@ namespace OpticalTouch
             Application.Run(new Form1());
         }
     }
+
+
 }
