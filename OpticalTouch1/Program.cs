@@ -11,13 +11,14 @@ namespace OpticalTouch
         /// <summary>
         /// 應用程式的主要進入點。
         /// </summary>
-        /*[STAThread]
+        [STAThread]
         static void Main()
         {
+            USBProgram.Start();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
-        }*/
+        }
     }
 
 

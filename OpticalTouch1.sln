@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpticalTouch", "OpticalTouc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyRealtimeChart", "D:\Downloads\MyRealtimeChart\MyRealtimeChart\MyRealtimeChart.csproj", "{FC5120BE-8068-49DE-A651-77C7CE499D8D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyRealtimeChart", "D:\Downloads\MyRealtimeChart\MyRealtimeChart\MyRealtimeChart.csproj", "{FC5120BE-8068-49DE-A651-77C7CE499D8D}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

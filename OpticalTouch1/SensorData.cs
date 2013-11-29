@@ -32,5 +32,10 @@ namespace OpticalTouch
             return data;
         }
 
+        public static int GetSingleData(int column, int x)
+        {
+            return data[column, x];
+        }
+
     }
 }
