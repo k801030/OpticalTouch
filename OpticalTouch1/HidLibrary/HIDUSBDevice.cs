@@ -330,15 +330,19 @@ namespace USBHIDDRIVER.USB
                         {
                             //ByteCount + bytes received
                             byteCount += myRead.Length;
-                            //Store received bytes
-                          /*  lock (recieveBuffer.SyncRoot)
-                            {
-                                recieveBuffer.Add(myRead);
-                            }*/
-                            lock (USBHIDDRIVER.USBInterface.usbBuffer.SyncRoot)
-                            {
-                                USBHIDDRIVER.USBInterface.usbBuffer.Add(myRead);
-                            }
+
+                            OpticalTouch.SensorData.RetrieveData(myRead);
+                            //Console.WriteLine(BitConverter.ToString(myRead));
+
+                                //Store received bytes
+                                /*  lock (recieveBuffer.SyncRoot)
+                                  {
+                                      recieveBuffer.Add(myRead);
+                                  }*/
+                                lock (USBHIDDRIVER.USBInterface.usbBuffer.SyncRoot)
+                                {
+                                    USBHIDDRIVER.USBInterface.usbBuffer.Add(myRead);
+                                }
                         }
                         else
                         {

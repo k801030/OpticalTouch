@@ -1,4 +1,4 @@
-﻿namespace OpticalTouch1
+﻿namespace OpticalTouch
 {
     partial class Form1
     {
@@ -29,11 +29,30 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.timerRealTimeData = new System.Windows.Forms.Timer(this.components);
+            this.SuspendLayout();
+            // 
+            // timerRealTimeData
+            // 
+            this.timerRealTimeData.Enabled = true;
+            this.timerRealTimeData.Interval = 200;
+            this.timerRealTimeData.Tick += new System.EventHandler(this.timerRealTimeData_Tick);
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Timer timerRealTimeData;
     }
 }
 

@@ -46,6 +46,7 @@ namespace USBHIDDRIVER.List
             if (Changed != null)
             {
                 Changed(this, e);
+                
             }
         }
 

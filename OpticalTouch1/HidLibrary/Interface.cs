@@ -35,7 +35,6 @@ namespace USBHIDDRIVER
         private bool isConnected;
 
         private USB.HIDUSBDevice usbdevice;
-        
         //USB LIST BUFFER
         /// <summary>
         /// Buffer for incomming data.
