@@ -16,7 +16,6 @@ namespace OpticalTouch
             int column = id / 10 -1;
             int row = id % 10;
             int i, j;
-            
             for (i = 2; i < 65; i++) // usable data from sensor
             {
                 j = i - 2; //offset
@@ -24,6 +23,8 @@ namespace OpticalTouch
                 if (row == 7 && i >= 61)  // these are useless bits
                     continue;
                 data[column, row * 63 + j] = _data[i];
+
+           
             }
         }
 
@@ -36,6 +37,8 @@ namespace OpticalTouch
         {
             return data[column, x];
         }
+
+       
 
     }
 }

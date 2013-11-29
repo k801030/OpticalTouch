@@ -35,7 +35,7 @@
             // timerRealTimeData
             // 
             this.timerRealTimeData.Enabled = true;
-            this.timerRealTimeData.Interval = 200;
+            this.timerRealTimeData.Interval = 20;
             this.timerRealTimeData.Tick += new System.EventHandler(this.timerRealTimeData_Tick);
             // 
             // Form1

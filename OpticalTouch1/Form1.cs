@@ -15,7 +15,7 @@ namespace OpticalTouch
 
         public Form1()
         {
-            
+            this.Closing += new System.ComponentModel.CancelEventHandler(this.Form_Closed);
             InitializeComponent();
         }
 
@@ -35,14 +35,18 @@ namespace OpticalTouch
             // clear all points
             chart.Series[0].Points.Clear();
 
-            // Simulate adding new data points
-            int newY = random.Next(0, 255);
 
             for(int i=0;i<500;i++)
                 chart.Series[0].Points.AddXY(i, SensorData.GetSingleData(0,i));
 
             // Redraw chart
             chart.Invalidate();
+        }
+
+        // when close, exit the program
+        private void Form_Closed(object sender, System.EventArgs e)
+        {
+            Environment.Exit(Environment.ExitCode);          
         }
     }
 }
