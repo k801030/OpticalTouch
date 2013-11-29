@@ -1,4 +1,4 @@
-﻿namespace OpticalTouch1
+﻿namespace OpticalTouch
 {
     partial class Form1
     {

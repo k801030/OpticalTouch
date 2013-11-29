@@ -9,7 +9,7 @@ using System.Threading;
 using USBHIDDRIVER;
 
 
-namespace test2
+namespace OpticalTouch
 {
     class Program
     {

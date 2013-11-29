@@ -1,5 +1,5 @@
 ﻿using System.Windows.Forms.DataVisualization.Charting;
-namespace test2
+namespace OpticalTouch
 {
     class RealtimeChart
     {
