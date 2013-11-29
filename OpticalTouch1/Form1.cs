@@ -35,9 +35,9 @@ namespace OpticalTouch
             // clear all points
             chart.Series[0].Points.Clear();
 
-
+            int[,] data = SensorData.GetNewData;
             for(int i=0;i<500;i++)
-                chart.Series[0].Points.AddXY(i, SensorData.GetSingleData(0,i));
+                chart.Series[0].Points.AddXY(i, data[0,i]);
 
             // Redraw chart
             chart.Invalidate();

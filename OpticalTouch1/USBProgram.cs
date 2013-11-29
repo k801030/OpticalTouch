@@ -25,30 +25,17 @@ namespace OpticalTouch
 
             usb.startRead();
 
-                    
+            Thread.Sleep(300);
+            SensorData.getBackground();
 
             //usb.stopRead();
 
 
             //MyPause();
         }
-        private static void startRead()
-        {
-            
-            
-            
-            if (USBInterface.usbBuffer ==null)
-            {
-                Console.WriteLine("Get no data from usb.");
-            }
-            /*int count = USBInterface.usbBuffer.Count;
-            foreach(byte buffer in USBInterface.usbBuffer)
-            {
-                
-                Console.WriteLine(USBInterface.usbBuffer);
-            }*/
-   
-        }
+
+
+
 
         private static void MyPause()
         {

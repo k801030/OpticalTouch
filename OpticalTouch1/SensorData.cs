@@ -8,7 +8,9 @@ namespace OpticalTouch
 {
     class SensorData
     {
-        static byte[,] data = new byte[2,500];
+        static int[,] rawData = new int[2, 500]; // original data from sensor
+        static int[,] newData = new int[2, 500]; // data after processing
+        static int[,] bgData = new int[2, 500];  // for background substraction
 
         public static void RetrieveData(byte[] _data)
         {
@@ -22,23 +24,53 @@ namespace OpticalTouch
 
                 if (row == 7 && i >= 61)  // these are useless bits
                     continue;
-                data[column, row * 63 + j] = _data[i];
-
-           
+                if (_data[i] < 20)   // these are error received bits
+                    continue;
+                rawData[column, row * 63 + j] = _data[i];
+                
             }
+            //newData = rawData;    this will make error wave
+            
+            SubBackground();
         }
 
-        public static byte[,] GetData()
+        public static int[,] GetNewData
         {
-            return data;
+           get {return newData;}
         }
 
-        public static int GetSingleData(int column, int x)
+        public static int[,] GetRawData
         {
-            return data[column, x];
+           get {return rawData;}
         }
 
-       
+ 
+
+        /// <summary>
+        /// Some data received are error
+        /// </summary>
+        private static void reduceNoise()
+        {
+
+        }
+
+        /// <summary>
+        ///  To substract the initial background
+        /// </summary>
+        private static void SubBackground()
+        {
+            for (int i = 0; i < 2; i++)
+                for (int j = 0; j < 500; j++)
+                    newData[i, j] = (255 + rawData[i, j] - bgData[i, j]);
+                    
+        }
+
+        public static void getBackground()
+        {
+            for (int i = 0; i < 2; i++)
+                for (int j = 0; j < 500; j++)
+                    bgData[i,j] = rawData[i,j];
+        }
 
     }
 }
