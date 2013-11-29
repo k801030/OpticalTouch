@@ -11,13 +11,13 @@ using USBHIDDRIVER;
 
 namespace OpticalTouch
 {
-    class Program
+    class Program2
     {
         static USBInterface usb;
         static string vid = "vid_04d8";
         static string pid = "pid_003f";
 
-        static void program()
+        static void program2()
         {
             usb = new USBInterface(vid, pid);
             Console.WriteLine("USB Connection: "+usb.Connect());

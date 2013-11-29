@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace OpticalTouch
 {
-    static class Program1
+    static class Program
     {
         /// <summary>
         /// 應用程式的主要進入點。

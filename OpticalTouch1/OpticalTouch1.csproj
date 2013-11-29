@@ -56,7 +56,7 @@
     <Compile Include="HidLibrary\HIDUSBDevice.cs" />
     <Compile Include="HidLibrary\Interface.cs" />
     <Compile Include="HidLibrary\ListWithEvent.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Program111.cs" />
     <Compile Include="Program1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RealtimeChart.cs" />
