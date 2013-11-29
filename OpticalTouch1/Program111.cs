@@ -24,8 +24,9 @@ namespace OpticalTouch
 
 
             usb.startRead();
-            Thread.Sleep(5);
-
+            
+            
+            /*
             for (int i = 0; i < 8; i++)
             {
                 Thread.Sleep(10);
@@ -37,17 +38,28 @@ namespace OpticalTouch
             
             int count = USBInterface.usbBuffer.Count;
             int start = 0;
-            while(true)
-            {
-                for(;start<count;start++)
+            for(int i=0;i<8;i++)
+
                     byte[] buf = (byte[])USBInterface.usbBuffer[start];
                 int bufLength = buf.Length;
-                
+                count++;
                 
                 
             }
+            */
 
-            
+            Thread.Sleep(500);
+            byte[,] data = SensorData.GetData();
+            for (int i = 0; i < 2; i++) 
+            { 
+                for(int j=0;j<500;j++)
+                {
+                    Console.Write(data[i,j]+" ");
+                }
+                Console.WriteLine();
+            }
+                    
+
             //usb.stopRead();
 
 

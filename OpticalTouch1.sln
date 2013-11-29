@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpticalTouch1", "OpticalTouch1\OpticalTouch1.csproj", "{FE772AE2-9B85-4740-9F14-57A763460544}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpticalTouch", "OpticalTouch1\OpticalTouch.csproj", "{FE772AE2-9B85-4740-9F14-57A763460544}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyRealtimeChart", "D:\Downloads\MyRealtimeChart\MyRealtimeChart\MyRealtimeChart.csproj", "{FC5120BE-8068-49DE-A651-77C7CE499D8D}"
 EndProject
