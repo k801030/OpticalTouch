@@ -17,7 +17,7 @@ namespace OpticalTouch
         static string vid = "vid_04d8";
         static string pid = "pid_003f";
 
-        static void program2()
+        static void Main()
         {
             usb = new USBInterface(vid, pid);
             Console.WriteLine("USB Connection: "+usb.Connect());
@@ -33,19 +33,22 @@ namespace OpticalTouch
 
             }
 
+
+            
             int count = USBInterface.usbBuffer.Count;
-            for (int i = 0; i < count;i++ )
+            int start = 0;
+            while(true)
             {
-                byte[] buf = (byte[])USBInterface.usbBuffer[i];
+                for(;start<count;start++)
+                    byte[] buf = (byte[])USBInterface.usbBuffer[start];
                 int bufLength = buf.Length;
                 
-                for (int j = 0; j < bufLength;j++ )
-                    Console.Write(buf[j] + " ");
-                Console.WriteLine();
+                
+                
             }
 
             
-            usb.stopRead();
+            //usb.stopRead();
 
 
             //MyPause();
