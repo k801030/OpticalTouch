@@ -15,10 +15,10 @@ namespace OpticalTouch
         static void Main()
         {
             USBProgram.Start(); // work as a thread
-            CalPoint.Start(); // calculate point
+            //CalPoint.Start(); // calculate point
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            //Application.Run(new Form1());
             Application.Run(new FullScreenPaint());
 
         }
