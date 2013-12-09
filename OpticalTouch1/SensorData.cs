@@ -34,6 +34,8 @@ namespace OpticalTouch
             SubBackground();
         }
 
+
+
         public static int[,] GetNewData
         {
            get {return newData;}
@@ -71,6 +73,8 @@ namespace OpticalTouch
                 for (int j = 0; j < 500; j++)
                     bgData[i,j] = rawData[i,j];
         }
+
+
 
     }
 }

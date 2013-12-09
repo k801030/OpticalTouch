@@ -9,6 +9,7 @@ namespace OpticalTouch
 {
     class PointCalculate
     {
+        static int[,] data;
         public static void Start()
         {
             Thread t1 = new Thread(ThreadProgram);
@@ -16,65 +17,34 @@ namespace OpticalTouch
 
         private static void ThreadProgram()
         {
-            int[,] data = SensorData.GetNewData;
+            data = SensorData.GetNewData;
 
 
         }
 
-        private static int[] calangle(int[] left, int[] right)
+        private static int[] calangle()
         {
-            int L_left = 0;
-            int L_right = 500;
-            int R_left = 0;
-            int R_right = 500;
-            int threshold = 200; //define threshold
+
+            int threshold = 200; //pixel value
             int[] angle = new int[2];
             //angle[0] means left angle
             //angle[1] means right angle
             // Calculate left peak
-            for (int i = 0; i < 499; i++)
+            for (int i = 0; i < 500; i++)
             {
-                if (left[i] - left[i + 1] >= threshold)
-                {
-                    L_left = i;
-                    break;
+                if (data[0, i] < threshold) 
+                { 
+                    for (int j = 0; j < 500; j++)
+                    {
+                        if (data[1, j] < threshold)
+                        {
+                            calpoint(i, j);
+                        }
+                    }
                 }
             }
 
-            for (int i = 499; i >= 2; i++)
-            {
-                if (left[i] - left[i - 1] >= threshold)
-                {
-                    L_right = i;
-                    break;
-                }
-            }
 
-            angle[0] = (L_left + L_right) / 2;
-
-            //
-
-            //Calculate right peak
-
-            for (int i = 0; i < 499; i++)
-            {
-                if (right[i] - right[i + 1] >= threshold)
-                {
-                    R_left = i;
-                    break;
-                }
-            }
-
-            for (int i = 499; i >= 2; i++)
-            {
-                if (right[i] - right[i - 1] >= threshold)
-                {
-                    R_right = i;
-                    break;
-                }
-            }
-            angle[1] = (R_left + R_right) / 2;
-            //
 
             return angle;
 
