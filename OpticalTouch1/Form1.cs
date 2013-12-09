@@ -21,9 +21,10 @@ namespace OpticalTouch
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.Size = new System.Drawing.Size(formWidth, formHeight);
+            //this.Size = new System.Drawing.Size(formWidth, formHeight);
             this.SuspendLayout();
             chart = new RealtimeChart().GetChart;
+            this.Controls.Add(chart);
             this.Controls.Add(chart);
             this.ResumeLayout(false);
         }
@@ -37,8 +38,7 @@ namespace OpticalTouch
 
             int[,] data = SensorData.GetNewData;
             for(int i=0;i<500;i++)
-                chart.Series[0].Points.AddXY(i, data[0,i]);
-
+                chart.Series[0].Points.AddXY(i, data[1,i]);
             // Redraw chart
             chart.Invalidate();
         }

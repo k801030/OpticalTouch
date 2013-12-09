@@ -14,7 +14,7 @@ namespace OpticalTouch
         [STAThread]
         static void Main()
         {
-            USBProgram.Start();
+            USBProgram.Start(); // work as a thread
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
