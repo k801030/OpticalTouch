@@ -52,11 +52,17 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FullScreenPaint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FullScreenPaint.Designer.cs">
+      <DependentUpon>FullScreenPaint.cs</DependentUpon>
+    </Compile>
     <Compile Include="HidLibrary\HidDeclarations.cs" />
     <Compile Include="HidLibrary\HIDUSBDevice.cs" />
     <Compile Include="HidLibrary\Interface.cs" />
     <Compile Include="HidLibrary\ListWithEvent.cs" />
-    <Compile Include="PointCalculate.cs" />
+    <Compile Include="CalPoint.cs" />
     <Compile Include="USBProgram.cs" />
     <Compile Include="MainProgram.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -43,6 +43,8 @@ namespace OpticalTouch
             chart.Invalidate();
         }
 
+
+
         // when close, exit the program
         private void Form_Closed(object sender, System.EventArgs e)
         {
