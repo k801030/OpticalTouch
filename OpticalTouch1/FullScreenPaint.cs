@@ -70,12 +70,13 @@ namespace OpticalTouch
 
         private void setMousePosition(Point point)
         {
-            
-            
+
+
             
             Cursor.Position = point; 
         }
 
+        
         private void Timer_Tick(object sender, EventArgs e)
         {
             Point[] BoundPoint = CalPoint.FindBoundPoint();
@@ -83,6 +84,8 @@ namespace OpticalTouch
             p.X = (BoundPoint[0].X + BoundPoint[1].X + BoundPoint[2].X + BoundPoint[3].X) / 4;
             p.Y = (BoundPoint[0].Y + BoundPoint[1].Y + BoundPoint[2].Y + BoundPoint[3].Y) / 4;
             setMousePosition(p);
+
+            
             //this.Invalidate();
         }
     }
