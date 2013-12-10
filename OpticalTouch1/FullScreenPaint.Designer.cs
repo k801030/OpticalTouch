@@ -49,8 +49,8 @@ namespace OpticalTouch
             t.Enabled = true;
 
 
-            //this.Focus();
-            //this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
+            this.Focus();
+            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
         }
 
 
