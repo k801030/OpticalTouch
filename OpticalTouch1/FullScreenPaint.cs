@@ -16,14 +16,17 @@ namespace OpticalTouch
 
     public partial class FullScreenPaint : Form
     {
-       static Label lab, lab2;
-
+        static Label lab, lab2;
+        static Point p;
+        Graphics g;
         public FullScreenPaint()
         {
             InitializeComponent();
 
             lab = new Label();
             this.Controls.Add(lab);
+
+            g = this.CreateGraphics();
         }
 
         public static void setText(double a, double b)
@@ -51,26 +54,9 @@ namespace OpticalTouch
         {
             base.OnPaint(e);
 
-            SolidBrush blueBrush = new SolidBrush(Color.Gray);
-            Point[] BoundPoint = CalPoint.FindBoundPoint();
-            // mouse control
-            if (BoundPoint != null)
-            { 
-                for (int i = 0; i < 4; i++)
-                {
-                //Console.WriteLine(BoundPoint[i].X+" "+BoundPoint[i].Y);
-                
-                e.Graphics.FillPolygon(blueBrush, BoundPoint);
-                
+            
 
-                }
-
-
-                Point p = new Point();
-                p.X = (BoundPoint[0].X + BoundPoint[1].X + BoundPoint[2].X + BoundPoint[3].X) / 4;
-                p.Y = (BoundPoint[0].Y + BoundPoint[1].Y + BoundPoint[2].Y + BoundPoint[3].Y) / 4;
-                //setMousePosition(p);
-            }
+            //e.Graphics.FillRectangle(blueBrush, p.X, p.Y, 10, 10);
             
         }
 
@@ -90,7 +76,7 @@ namespace OpticalTouch
             // mouse control
             if (BoundPoint != null)
             {
-                Point p = new Point();
+                p = new Point();
                 p.X = (BoundPoint[0].X + BoundPoint[1].X + BoundPoint[2].X + BoundPoint[3].X) / 4;
                 p.Y = (BoundPoint[0].Y + BoundPoint[1].Y + BoundPoint[2].Y + BoundPoint[3].Y) / 4;
                 setMousePosition(p);
@@ -99,10 +85,12 @@ namespace OpticalTouch
                 byte MOUSEEVENTF_LEFTUP = 0x0004;
                 mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, IntPtr.Zero);
                 mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, IntPtr.Zero);
-                   
+
+                SolidBrush blueBrush = new SolidBrush(Color.Gray);
+                g.FillRectangle(blueBrush, p.X, p.Y, 10, 10);
             }
 
-            
+
             //this.Invalidate();
         }
 
