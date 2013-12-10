@@ -51,20 +51,24 @@ namespace OpticalTouch
 
             SolidBrush blueBrush = new SolidBrush(Color.Gray);
             Point[] BoundPoint = CalPoint.FindBoundPoint();
-            for (int i = 0; i < 4; i++)
-            {
+            // mouse control
+            if (BoundPoint != null)
+            { 
+                for (int i = 0; i < 4; i++)
+                {
                 //Console.WriteLine(BoundPoint[i].X+" "+BoundPoint[i].Y);
                 
                 e.Graphics.FillPolygon(blueBrush, BoundPoint);
                 
 
-            }
+                }
 
-            // mouse control
-            Point p = new Point();
-            p.X = (BoundPoint[0].X + BoundPoint[1].X + BoundPoint[2].X + BoundPoint[3].X) / 4;
-            p.Y = (BoundPoint[0].Y + BoundPoint[1].Y + BoundPoint[2].Y + BoundPoint[3].Y) / 4;
-            setMousePosition(p);
+
+                Point p = new Point();
+                p.X = (BoundPoint[0].X + BoundPoint[1].X + BoundPoint[2].X + BoundPoint[3].X) / 4;
+                p.Y = (BoundPoint[0].Y + BoundPoint[1].Y + BoundPoint[2].Y + BoundPoint[3].Y) / 4;
+                //setMousePosition(p);
+            }
             
         }
 
@@ -80,10 +84,14 @@ namespace OpticalTouch
         private void Timer_Tick(object sender, EventArgs e)
         {
             Point[] BoundPoint = CalPoint.FindBoundPoint();
-            Point p = new Point();
-            p.X = (BoundPoint[0].X + BoundPoint[1].X + BoundPoint[2].X + BoundPoint[3].X) / 4;
-            p.Y = (BoundPoint[0].Y + BoundPoint[1].Y + BoundPoint[2].Y + BoundPoint[3].Y) / 4;
-            setMousePosition(p);
+            // mouse control
+            if (BoundPoint != null)
+            {
+                Point p = new Point();
+                p.X = (BoundPoint[0].X + BoundPoint[1].X + BoundPoint[2].X + BoundPoint[3].X) / 4;
+                p.Y = (BoundPoint[0].Y + BoundPoint[1].Y + BoundPoint[2].Y + BoundPoint[3].Y) / 4;
+                setMousePosition(p);
+            }
 
             
             //this.Invalidate();
