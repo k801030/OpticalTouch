@@ -48,6 +48,8 @@ namespace OpticalTouch
             t.Tick += new EventHandler(Timer_Tick);
             t.Enabled = true;
 
+            
+
         }
 
 

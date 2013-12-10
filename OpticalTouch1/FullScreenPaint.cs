@@ -14,11 +14,24 @@ namespace OpticalTouch
 {
     public partial class FullScreenPaint : Form
     {
+       static Label lab, lab2;
+
         public FullScreenPaint()
         {
             InitializeComponent();
-            
+
+            lab = new Label();
+            this.Controls.Add(lab);
         }
+
+        public static void setText(double a, double b)
+        {
+            string text ;
+            text = string.Format("{0:F1}", a) + " ， " + string.Format("{0:F1}", b);
+
+            lab.Text = Convert.ToString(text);
+        }
+
 
         private void MyOnKeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
         {
@@ -58,7 +71,7 @@ namespace OpticalTouch
         private void setMousePosition(Point point)
         {
 
-            Cursor.Position = point;
+            Cursor.Position = point; 
         }
 
         private void Timer_Tick(object sender, EventArgs e)

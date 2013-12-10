@@ -76,23 +76,28 @@ namespace OpticalTouch
         private static Point calpoint(int l_angle, int r_angle)
         {
             //depend on each monitor  ratio = resolution / length(cm)
-            const double Xratio = 34.04;
-            const double Yratio = 55.813;
-            double width = 47;//define the width of screen
+            const double Xratio = 33.3;
+            const double Yratio = 46.15;//55.813;
+            double width = 49;//define the width of screen
+
+            r_angle += 15; // offset
 
             double l_theta = (l_angle * 90 / 500) * Math.PI / 180;
             double r_theta = (r_angle * 90 / 500) * Math.PI / 180;
-
+            
             double xcm = width * Math.Tan((Math.PI / 2) - r_theta) / (Math.Tan((Math.PI / 2) - r_theta) + Math.Tan(l_theta));
             double ycm = xcm * Math.Tan(l_theta);
-
-            int xpixel = Convert.ToInt32(xcm * Xratio);
-            int ypixel = Convert.ToInt32(ycm * Yratio);
             
 
+            xcm -= 1; 
+            ycm -= 1;
+            int xpixel = Convert.ToInt32(xcm * Xratio);
+            int ypixel = Convert.ToInt32(ycm * Yratio);
+            FullScreenPaint.setText(xcm, ycm);
+            
             //  there are some offset
-            ypixel -= 160;
-            xpixel -= 50;
+          // ypixel -= 160;
+          // xpixel -= 50;
 
             Point p = new Point();
             p.X = xpixel;
