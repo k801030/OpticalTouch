@@ -11,6 +11,20 @@ namespace OpticalTouch
         static int[,] rawData = new int[2, 500]; // original data from sensor
         static int[,] newData = new int[2, 500]; // data after processing
         static int[,] bgData = new int[2, 500];  // for background substraction
+        
+        //check the data is all received.
+        /*struct DataCheck
+        {
+            public byte id;
+            public bool vaild;
+        }
+        List<DataCheck> dataCheck = new List<DataCheck>();
+
+        public static void init()
+        {
+            DataCheck[] dc = new DataCheck[16];
+
+        }*/
 
         public static void RetrieveData(byte[] _data)
         {
@@ -30,7 +44,10 @@ namespace OpticalTouch
                 
             }
             //newData = rawData;    this will make error wave
+
             
+            
+
             SubBackground();
         }
 

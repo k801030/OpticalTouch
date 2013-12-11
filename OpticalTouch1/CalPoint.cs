@@ -99,7 +99,7 @@ namespace OpticalTouch
             
 
             xcm -= 1; 
-            ycm -= 1;
+            ycm -= 1; 
             int xpixel = Convert.ToInt32(xcm * Xratio);
             int ypixel = Convert.ToInt32(ycm * Yratio);
             FullScreenPaint.setText(xcm, ycm);

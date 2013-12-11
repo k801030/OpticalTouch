@@ -43,6 +43,9 @@ namespace OpticalTouch
             if(e.KeyChar==(char)Keys.Escape)
             {
                 this.Close();
+            }else if(e.KeyChar == (char)Keys.Space)
+            {
+                g.Clear(Color.White);
             }
         }
         protected override void OnKeyPress(KeyPressEventArgs e)
@@ -80,13 +83,14 @@ namespace OpticalTouch
                 p.X = (BoundPoint[0].X + BoundPoint[1].X + BoundPoint[2].X + BoundPoint[3].X) / 4;
                 p.Y = (BoundPoint[0].Y + BoundPoint[1].Y + BoundPoint[2].Y + BoundPoint[3].Y) / 4;
                 setMousePosition(p);
-
+                /*
                 byte MOUSEEVENTF_LEFTDOWN = 0x0002;
                 byte MOUSEEVENTF_LEFTUP = 0x0004;
                 mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, IntPtr.Zero);
                 mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, IntPtr.Zero);
+                */
 
-                SolidBrush blueBrush = new SolidBrush(Color.Gray);
+                SolidBrush blueBrush = new SolidBrush(Color.Blue);
                 g.FillRectangle(blueBrush, p.X, p.Y, 10, 10);
             }
 
