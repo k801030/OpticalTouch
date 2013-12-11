@@ -25,8 +25,7 @@ namespace OpticalTouch
 
             usb.startRead();
 
-            Thread.Sleep(300);
-            SensorData.getBackground();
+            
 
             //usb.stopRead();
 

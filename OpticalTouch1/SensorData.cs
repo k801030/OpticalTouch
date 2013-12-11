@@ -11,7 +11,9 @@ namespace OpticalTouch
         static int[,] rawData = new int[2, 500]; // original data from sensor
         static int[,] newData = new int[2, 500]; // data after processing
         static int[,] bgData = new int[2, 500];  // for background substraction
-        
+        static bool getBGBool = false;  // if we ever or not get background
+        static bool[,] dataCheck = new bool[2,8]; // for id check
+
         //check the data is all received.
         /*struct DataCheck
         {
@@ -26,8 +28,11 @@ namespace OpticalTouch
 
         }*/
 
+
         public static void RetrieveData(byte[] _data)
         {
+            
+            
             byte id = _data[1];  // identify the set of data
             int column = id / 10 -1;
             int row = id % 10;
@@ -48,10 +53,64 @@ namespace OpticalTouch
             
             
 
-            SubBackground();
+            
+
+            dataCheck[column, row] = true;
+
+            //Console.WriteLine("~~ (" + column + " " + row + ") "+dataCheck[column,row] );
+
+
+            if(AllDataReceive())
+            {
+                if (getBGBool == false)
+                { // not get yet
+                    getBackground();
+                }
+                else
+                {
+                    SubBackground();
+                }
+
+                SubmitToNewData();
+                
+
+                /*
+                for ( i = 0; i < 2; i++) 
+                { 
+                    for ( j = 0; j < 500; j++)
+                    {
+                        Console.Write(newData[i, j] + " ");
+                    }
+                    Console.WriteLine();
+                }
+                 */
+            }
         }
 
+        private static bool AllDataReceive()
+        {
+            for (int i = 0; i < 2; i++)
+                for (int j = 0; j < 8; j++)
+                {
+                    if (dataCheck[i, j] == false)
+                        return false;
+                        
+                }
 
+            //reset data check
+            for (int i = 0; i < 2; i++)
+                for (int j = 0; j < 8; j++)
+                    dataCheck[i, j] = false;
+            return true;
+        }
+
+        private static void SubmitToNewData()
+        {
+            for (int i = 0; i < 2; i++)
+                for (int j = 0; j < 500; j++)
+                    newData[i, j] = rawData[i, j];
+            
+        }
 
         public static int[,] GetNewData
         {
@@ -80,7 +139,7 @@ namespace OpticalTouch
         {
             for (int i = 0; i < 2; i++)
                 for (int j = 0; j < 500; j++)
-                    newData[i, j] = (255 + rawData[i, j] - bgData[i, j]);
+                    rawData[i, j] = (255 + rawData[i, j] - bgData[i, j]);
                     
         }
 
@@ -89,9 +148,21 @@ namespace OpticalTouch
             for (int i = 0; i < 2; i++)
                 for (int j = 0; j < 500; j++)
                     bgData[i,j] = rawData[i,j];
+            getBGBool = true;
+
+            for (int i = 0; i < 2; i++)
+            {
+                for (int j = 0; j < 500; j++)
+                    Console.Write(bgData[i, j]+" ");
+                Console.WriteLine();
+
+            }
         }
 
+        public static void returnData()
+        {
 
+        }
 
     }
 }

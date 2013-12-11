@@ -43,7 +43,7 @@ namespace OpticalTouch
             Point[] BoundPoint = new Point[4];
 
             data = SensorData.GetNewData;
-
+            
             for(int i=0;i<2;i++)  //side
                 for(int j=0;j<500;j++) //angle
                 {
