@@ -83,9 +83,13 @@ namespace OpticalTouch
             BoundPoint[3] = calpoint(BoundAngle[0, 0], BoundAngle[1, 1]);
 
             if (findPoint)
+            {
                 return BoundPoint;
-            else
+            }
+            else 
+            { 
                 return null;
+            }
 
         }
 
@@ -110,7 +114,7 @@ namespace OpticalTouch
             int xpixel = Convert.ToInt32(xcm * Xratio);
             int ypixel = Convert.ToInt32(ycm * Yratio);
             
-                FullScreenPaint.setText(l_angle, r_angle);
+                
             
             //  there are some offset
           // ypixel -= 160;
