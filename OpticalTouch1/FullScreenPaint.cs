@@ -75,6 +75,13 @@ namespace OpticalTouch
         
         private void Timer_Tick(object sender, EventArgs e)
         {
+
+        }
+
+        public void MouseMove()
+        {
+
+
             Point[] BoundPoint = CalPoint.FindBoundPoint();
             // mouse control
             if (BoundPoint != null)
@@ -95,14 +102,13 @@ namespace OpticalTouch
 
 
                 Console.WriteLine(p.X + " " + p.Y);
-                
-                    
+
+
             }
 
 
             //this.Invalidate();
         }
-
         [DllImport("User32")]
         public extern static void mouse_event(int dwFlags, int dx, int dy, int dwData, IntPtr dwExtraInfo);
     }

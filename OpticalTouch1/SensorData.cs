@@ -72,7 +72,8 @@ namespace OpticalTouch
                 }
 
                 SubmitToNewData();
-                
+
+                MainProgram.fs.MouseMove();
 
                 /*
                 for ( i = 0; i < 2; i++) 
