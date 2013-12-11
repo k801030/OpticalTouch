@@ -44,7 +44,7 @@ namespace OpticalTouch
 
             //timer
             Timer t = new Timer();
-            t.Interval = 20;
+            t.Interval = 10;
             t.Tick += new EventHandler(Timer_Tick);
             t.Enabled = true;
 

@@ -92,6 +92,11 @@ namespace OpticalTouch
 
                 SolidBrush blueBrush = new SolidBrush(Color.Blue);
                 g.FillRectangle(blueBrush, p.X, p.Y, 10, 10);
+
+
+                Console.WriteLine(p.X + " " + p.Y);
+                
+                    
             }
 
 

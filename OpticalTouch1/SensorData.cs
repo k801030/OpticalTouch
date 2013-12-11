@@ -150,13 +150,6 @@ namespace OpticalTouch
                     bgData[i,j] = rawData[i,j];
             getBGBool = true;
 
-            for (int i = 0; i < 2; i++)
-            {
-                for (int j = 0; j < 500; j++)
-                    Console.Write(bgData[i, j]+" ");
-                Console.WriteLine();
-
-            }
         }
 
         public static void returnData()
