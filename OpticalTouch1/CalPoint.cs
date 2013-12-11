@@ -13,7 +13,7 @@ namespace OpticalTouch
     {
        
         public static Point[] BoundPoint;
-        private static int[,] data ;
+        private static int[,] data = new int[2,500];
 
         public static void Start()
         {
@@ -32,7 +32,8 @@ namespace OpticalTouch
             
 
         }
-        
+
+
         public static Point[] FindBoundPoint()
         {
             const int thresholdL1 = 200;  // for sensing object
@@ -42,8 +43,14 @@ namespace OpticalTouch
             int[,] BoundAngle = new int[2 , 2];
             Point[] BoundPoint = new Point[4];
 
-            data = SensorData.GetNewData;
-            
+            //data = SensorData.GetNewData;
+            int[,] _data;
+            _data = SensorData.GetNewData;
+            for (int i = 0; i < 2; i++)
+                for (int j = 0; j < 500; j++)
+                    data[i, j] = _data[i, j];
+
+
             for(int i=0;i<2;i++)  //side
                 for(int j=0;j<500;j++) //angle
                 {
@@ -102,7 +109,8 @@ namespace OpticalTouch
             ycm -= 1; 
             int xpixel = Convert.ToInt32(xcm * Xratio);
             int ypixel = Convert.ToInt32(ycm * Yratio);
-            FullScreenPaint.setText(xcm, ycm);
+            
+                FullScreenPaint.setText(l_angle, r_angle);
             
             //  there are some offset
           // ypixel -= 160;
