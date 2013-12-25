@@ -100,8 +100,20 @@ namespace OpticalTouch
                 SolidBrush blueBrush = new SolidBrush(Color.Blue);
                 g.FillRectangle(blueBrush, p.X, p.Y, 10, 10);
 
-
+                /*
                 Console.WriteLine(p.X + " " + p.Y);
+                int[,] _data ;
+                _data= SensorData.GetNewData;
+                for (int i = 0; i < 2; i++) 
+                { 
+                    for (int j = 0; j < 500; j++)
+                        Console.Write(_data[i, j] + ", ");
+                    Console.WriteLine();
+                }
+
+                Console.WriteLine("//////////////////");
+                */
+
 
 
             }

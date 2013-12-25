@@ -13,7 +13,7 @@ namespace OpticalTouch
         static int[,] bgData = new int[2, 500];  // for background substraction
         static bool getBGBool = false;  // if we ever or not get background
         static bool[,] dataCheck = new bool[2,8]; // for id check
-
+        static int count = 0;
         //check the data is all received.
         /*struct DataCheck
         {
@@ -32,7 +32,7 @@ namespace OpticalTouch
         public static void RetrieveData(byte[] _data)
         {
             
-            
+ 
             byte id = _data[1];  // identify the set of data
             int column = id / 10 -1;
             int row = id % 10;
