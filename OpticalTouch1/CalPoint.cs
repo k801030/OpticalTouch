@@ -15,13 +15,8 @@ namespace OpticalTouch
         public static Point[] BoundPoint;
         private static int[,] data = new int[2,500];
 
-        public static void Start()
-        {
-            Thread t1 = new Thread(ThreadProgram);
-            t1.Start();
-        }
 
-        private static void ThreadProgram()
+       /* private static void ThreadProgram()
         {
             data = SensorData.GetNewData;
             
@@ -31,7 +26,7 @@ namespace OpticalTouch
             }
             
 
-        }
+        }*/
 
 
         public static Point[] FindBoundPoint()

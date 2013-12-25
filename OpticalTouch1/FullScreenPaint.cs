@@ -19,7 +19,7 @@ namespace OpticalTouch
     {
         byte MOUSEEVENTF_LEFTDOWN = 0x0002;
         byte MOUSEEVENTF_LEFTUP = 0x0004;
-
+        int count = 0;
         static Label lab, lab2;
         static Point p;
         Graphics g;

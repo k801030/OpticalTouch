@@ -19,8 +19,8 @@ namespace OpticalTouch
             Point[] BoundPoint = CalPoint.FindBoundPoint();
             // mouse control
             if (BoundPoint == null){
-                if(TouchDown == true)
-                    MainProgram.fs.MouseUp();
+                //if(TouchDown == true)
+                    //MainProgram.fs.MouseUp();
                 TouchDown = false;
             }else{
                 
@@ -31,8 +31,8 @@ namespace OpticalTouch
                 TP.Push(p);
                 if (TouchDown == false)
                 {
-                    TouchDown = true;
-                    MainProgram.fs.MouseDown();
+                    //TouchDown = true;
+                    //MainProgram.fs.MouseDown();
                 }else { 
                     MainProgram.fs.MouseMove(p);
                 }
