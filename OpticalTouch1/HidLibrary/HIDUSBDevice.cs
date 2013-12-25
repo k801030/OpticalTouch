@@ -332,8 +332,7 @@ namespace USBHIDDRIVER.USB
                             byteCount += myRead.Length;
 
                             OpticalTouch.SensorData.RetrieveData(myRead);
-                            Console.WriteLine(count);
-                            count++;
+
                             //Console.WriteLine(BitConverter.ToString(myRead));
 
                                 //Store received bytes
