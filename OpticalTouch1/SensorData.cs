@@ -73,8 +73,8 @@ namespace OpticalTouch
 
                 SubmitToNewData();
 
-                //MainProgram.fs.MouseMove();
-                PointTrace.Trace();
+                MainProgram.fs.MouseMove();
+                //PointTrace.Trace();
 
                 /*
                 for ( i = 0; i < 2; i++) 

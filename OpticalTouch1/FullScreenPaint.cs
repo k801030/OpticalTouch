@@ -82,9 +82,14 @@ namespace OpticalTouch
 
         }
 
-        public void MouseMove(Point p)
+        public void MouseMove()
         {
-
+            Point[] BoundPoint = CalPoint.FindBoundPoint();
+            Point p = new Point();
+            if (BoundPoint != null) { 
+            
+            p.X = (BoundPoint[0].X + BoundPoint[1].X + BoundPoint[2].X + BoundPoint[3].X) / 4;
+            p.Y = (BoundPoint[0].Y + BoundPoint[1].Y + BoundPoint[2].Y + BoundPoint[3].Y) / 4;
 
                 setMousePosition(p);
                 /*
@@ -95,7 +100,7 @@ namespace OpticalTouch
 
                 SolidBrush blueBrush = new SolidBrush(Color.Blue);
                 g.FillRectangle(blueBrush, p.X, p.Y, 10, 10);
-
+            }
 
 
                 Thread t = new Thread(Print);
