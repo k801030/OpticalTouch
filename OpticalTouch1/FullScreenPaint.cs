@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Input;
 using System.Runtime.InteropServices;
+using System.Threading;
 
 namespace OpticalTouch
 {
@@ -100,19 +101,10 @@ namespace OpticalTouch
                 SolidBrush blueBrush = new SolidBrush(Color.Blue);
                 g.FillRectangle(blueBrush, p.X, p.Y, 10, 10);
 
-                /*
-                Console.WriteLine(p.X + " " + p.Y);
-                int[,] _data ;
-                _data= SensorData.GetNewData;
-                for (int i = 0; i < 2; i++) 
-                { 
-                    for (int j = 0; j < 500; j++)
-                        Console.Write(_data[i, j] + ", ");
-                    Console.WriteLine();
-                }
 
-                Console.WriteLine("//////////////////");
-                */
+
+                Thread t = new Thread(Print);
+                t.Start();
 
 
 
@@ -121,6 +113,23 @@ namespace OpticalTouch
 
             //this.Invalidate();
         }
+
+        private void Print()
+        {
+            Console.WriteLine("//////////////////");
+            Console.WriteLine(p.X + " " + p.Y);
+            int[,] _data;
+            _data = SensorData.GetNewData;
+            for (int i = 0; i < 2; i++)
+            {
+                for (int j = 0; j < 500; j++)
+                    Console.Write(_data[i, j] + ", ");
+                Console.WriteLine();
+            }
+
+           
+        }
+
         [DllImport("User32")]
         public extern static void mouse_event(int dwFlags, int dx, int dy, int dwData, IntPtr dwExtraInfo);
     }
