@@ -82,7 +82,8 @@ namespace OpticalTouch
 
         }
 
-        public void MouseMove()
+        private static bool downFlag = false;
+        public void MouseControl()
         {
             Point[] BoundPoint = CalPoint.FindBoundPoint();
             Point p = new Point();
@@ -91,7 +92,14 @@ namespace OpticalTouch
             p.X = (BoundPoint[0].X + BoundPoint[1].X + BoundPoint[2].X + BoundPoint[3].X) / 4;
             p.Y = (BoundPoint[0].Y + BoundPoint[1].Y + BoundPoint[2].Y + BoundPoint[3].Y) / 4;
 
-                setMousePosition(p);
+            if (downFlag == true) {
+                MouseMove(p);
+            }
+            else
+            {
+                downFlag = true;
+                MouseDown();
+            }
                 /*
                
                 mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, IntPtr.Zero);
@@ -100,21 +108,27 @@ namespace OpticalTouch
 
                 SolidBrush blueBrush = new SolidBrush(Color.Blue);
                 g.FillRectangle(blueBrush, p.X, p.Y, 10, 10);
+            }else {
+                downFlag = false;
+                Console.WriteLine("UP");
+                MouseUp();
             }
 
 
-                Thread t = new Thread(Print);
-                if(p.X<0 || p.Y<0)
-                t.Start();
+                
             //this.Invalidate();
         }
 
-        public void MouseDown()
+        private void MouseMove(Point p)
+        {
+            setMousePosition(p);
+        }
+        private void MouseDown()
         {
             mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, IntPtr.Zero);
         }
 
-        public void MouseUp()
+        private void MouseUp()
         {
             mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, IntPtr.Zero);
         }
