@@ -305,7 +305,7 @@ namespace USBHIDDRIVER.USB
             
             int receivedNull = 0;
             //add
-            StreamWriter sw = new StreamWriter(@"C:\Users\Vi\Desktop\test2data.txt");
+            
 
             while (true)
             {
@@ -332,6 +332,10 @@ namespace USBHIDDRIVER.USB
                             byteCount += myRead.Length;
 
                             OpticalTouch.SensorData.RetrieveData(myRead);
+<<<<<<< HEAD
+=======
+                            
+>>>>>>> com
 
                             //Console.WriteLine(BitConverter.ToString(myRead));
 
