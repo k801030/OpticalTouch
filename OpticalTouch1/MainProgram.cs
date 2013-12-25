@@ -15,7 +15,7 @@ namespace OpticalTouch
         [STAThread]
         static void Main()
         {
-            //USBProgram.Start(); // work as a thread
+            USBProgram.Start(); // work as a thread
             //CalPoint.Start(); // calculate point
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

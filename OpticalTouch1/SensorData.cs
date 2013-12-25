@@ -59,9 +59,10 @@ namespace OpticalTouch
 
             //Console.WriteLine("~~ (" + column + " " + row + ") "+dataCheck[column,row] );
 
-
+            
             if(AllDataReceive())
             {
+
                 if (getBGBool == false)
                 { // not get yet
                     getBackground();
@@ -73,8 +74,8 @@ namespace OpticalTouch
 
                 SubmitToNewData();
 
-                //MainProgram.fs.MouseMove();
-                PointTrace.Trace();
+                MainProgram.fs.MouseControl();
+                //PointTrace.Trace();
 
                 /*
                 for ( i = 0; i < 2; i++) 

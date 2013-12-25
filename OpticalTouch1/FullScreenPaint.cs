@@ -51,6 +51,7 @@ namespace OpticalTouch
             {
                 g.Clear(Color.White);
             }
+
         }
         protected override void OnKeyPress(KeyPressEventArgs e)
         {
@@ -82,11 +83,27 @@ namespace OpticalTouch
 
         }
 
-        public void MouseMove(Point p)
+        private static bool MouseStatus = false;
+        private const bool UP = true;
+        private const bool DOWN = false;
+        public void MouseControl()
         {
+            Point[] BoundPoint = CalPoint.FindBoundPoint();
+            Point p = new Point();
+            if (BoundPoint != null) { 
+            
+            p.X = (BoundPoint[0].X + BoundPoint[1].X + BoundPoint[2].X + BoundPoint[3].X) / 4;
+            p.Y = (BoundPoint[0].Y + BoundPoint[1].Y + BoundPoint[2].Y + BoundPoint[3].Y) / 4;
 
-
-                setMousePosition(p);
+            if (MouseStatus == DOWN)
+            {
+                MouseMove(p);
+            }
+            else
+            {
+                MouseDown(p);
+                MouseStatus = DOWN;
+            }
                 /*
                
                 mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, IntPtr.Zero);
@@ -95,23 +112,35 @@ namespace OpticalTouch
 
                 SolidBrush blueBrush = new SolidBrush(Color.Blue);
                 g.FillRectangle(blueBrush, p.X, p.Y, 10, 10);
+            }else {
+                if (MouseStatus == DOWN) { 
+                    MouseUp();
+                    MouseStatus = UP;
+                }
+            }
 
 
-
-                Thread t = new Thread(Print);
-                if(p.X<0 || p.Y<0)
-                t.Start();
+                
             //this.Invalidate();
         }
 
-        public void MouseDown()
+        private void MouseMove(Point p)
         {
-            mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, IntPtr.Zero);
+            setMousePosition(p);
         }
-
-        public void MouseUp()
+        private void MouseDown(Point p)
         {
+            Console.WriteLine("DOWN");
+            setMousePosition(p);
+            mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, IntPtr.Zero);
+            Thread.Sleep(100);
+        }
+ 
+        private void MouseUp()
+        {
+            Console.WriteLine("UP");
             mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, IntPtr.Zero);
+            Thread.Sleep(100);
         }
 
         private void Print()

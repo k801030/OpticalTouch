@@ -36,7 +36,7 @@ namespace USBHIDDRIVER.USB
         bool disposed = false;
 
         private Thread usbThread;
-
+        private int count = 0;
         /*Variables --------------------------------------------------------------------*/
         private String vendorID;    //Vendor ID of the Device
         private String productID;   //Product ID of the Device
@@ -332,6 +332,8 @@ namespace USBHIDDRIVER.USB
                             byteCount += myRead.Length;
 
                             OpticalTouch.SensorData.RetrieveData(myRead);
+                            Console.WriteLine(count);
+                            count++;
                             //Console.WriteLine(BitConverter.ToString(myRead));
 
                                 //Store received bytes
