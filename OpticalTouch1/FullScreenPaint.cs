@@ -83,13 +83,6 @@ namespace OpticalTouch
         {
 
 
-            Point[] BoundPoint = CalPoint.FindBoundPoint();
-            // mouse control
-            if (BoundPoint != null)
-            {
-                p = new Point();
-                p.X = (BoundPoint[0].X + BoundPoint[1].X + BoundPoint[2].X + BoundPoint[3].X) / 4;
-                p.Y = (BoundPoint[0].Y + BoundPoint[1].Y + BoundPoint[2].Y + BoundPoint[3].Y) / 4;
                 setMousePosition(p);
                 /*
                 byte MOUSEEVENTF_LEFTDOWN = 0x0002;
@@ -104,11 +97,12 @@ namespace OpticalTouch
 
 
                 Thread t = new Thread(Print);
+                if(p.X<0 || p.Y<0)
                 t.Start();
 
 
 
-            }
+            
 
 
             //this.Invalidate();
