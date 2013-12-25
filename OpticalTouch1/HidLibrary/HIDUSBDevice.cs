@@ -321,8 +321,7 @@ namespace USBHIDDRIVER.USB
                         byte[] myRead = myUSB.CT_ReadFile(myUSB.myHIDP_CAPS.InputReportByteLength);
                         //Console.WriteLine(BitConverter.ToString(myRead));
                         int length = myUSB.myHIDP_CAPS.InputReportByteLength;
-                        for (int i = 0; i < length;i++ )
-                            ;
+
                         
                         
                             
@@ -332,10 +331,7 @@ namespace USBHIDDRIVER.USB
                             byteCount += myRead.Length;
 
                             OpticalTouch.SensorData.RetrieveData(myRead);
-<<<<<<< HEAD
-=======
-                            
->>>>>>> com
+
 
                             //Console.WriteLine(BitConverter.ToString(myRead));
 
