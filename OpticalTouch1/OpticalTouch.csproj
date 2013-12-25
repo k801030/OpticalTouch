@@ -63,6 +63,7 @@
     <Compile Include="HidLibrary\Interface.cs" />
     <Compile Include="HidLibrary\ListWithEvent.cs" />
     <Compile Include="CalPoint.cs" />
+    <Compile Include="PointTrace.cs" />
     <Compile Include="USBProgram.cs" />
     <Compile Include="MainProgram.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

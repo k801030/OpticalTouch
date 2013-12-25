@@ -17,6 +17,9 @@ namespace OpticalTouch
 
     public partial class FullScreenPaint : Form
     {
+        byte MOUSEEVENTF_LEFTDOWN = 0x0002;
+        byte MOUSEEVENTF_LEFTUP = 0x0004;
+
         static Label lab, lab2;
         static Point p;
         Graphics g;
@@ -79,14 +82,13 @@ namespace OpticalTouch
 
         }
 
-        public void MouseMove()
+        public void MouseMove(Point p)
         {
 
 
                 setMousePosition(p);
                 /*
-                byte MOUSEEVENTF_LEFTDOWN = 0x0002;
-                byte MOUSEEVENTF_LEFTUP = 0x0004;
+               
                 mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, IntPtr.Zero);
                 mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, IntPtr.Zero);
                 */
@@ -99,13 +101,17 @@ namespace OpticalTouch
                 Thread t = new Thread(Print);
                 if(p.X<0 || p.Y<0)
                 t.Start();
-
-
-
-            
-
-
             //this.Invalidate();
+        }
+
+        public void MouseDown()
+        {
+            mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, IntPtr.Zero);
+        }
+
+        public void MouseUp()
+        {
+            mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, IntPtr.Zero);
         }
 
         private void Print()
