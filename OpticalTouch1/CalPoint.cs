@@ -38,7 +38,7 @@ namespace OpticalTouch
         {
             const int thresholdL1 = 200;  // for sensing object
             const int thresholdL2 = 230;  // for finding boundary
-            bool findPoint = false;
+            bool[] findPoint = {false,false};
 
             int[,] BoundAngle = new int[2 , 2];
             Point[] BoundPoint = new Point[4];
@@ -56,7 +56,7 @@ namespace OpticalTouch
                 {
                     if (data[i, j] < thresholdL1)
                     {
-                        findPoint = true;
+                        findPoint[i] = true;
                         for (int k = 0; k < 500; k++)
                         {
                             if(data[i,j-k] > thresholdL2 || j - k ==0)
@@ -76,14 +76,13 @@ namespace OpticalTouch
 
                     }
                 }
-            
-            BoundPoint[0] = calpoint(BoundAngle[0, 0], BoundAngle[1, 0]);
-            BoundPoint[1] = calpoint(BoundAngle[0, 1], BoundAngle[1, 0]);
-            BoundPoint[2] = calpoint(BoundAngle[0, 1], BoundAngle[1, 1]);
-            BoundPoint[3] = calpoint(BoundAngle[0, 0], BoundAngle[1, 1]);
 
-            if (findPoint)
+            if (findPoint[0] && findPoint[1])
             {
+                BoundPoint[0] = calpoint(BoundAngle[0, 0], BoundAngle[1, 0]);
+                BoundPoint[1] = calpoint(BoundAngle[0, 1], BoundAngle[1, 0]);
+                BoundPoint[2] = calpoint(BoundAngle[0, 1], BoundAngle[1, 1]);
+                BoundPoint[3] = calpoint(BoundAngle[0, 0], BoundAngle[1, 1]);
                 return BoundPoint;
             }
             else 
