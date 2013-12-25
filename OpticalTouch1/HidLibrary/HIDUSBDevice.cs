@@ -305,8 +305,16 @@ namespace USBHIDDRIVER.USB
             
             int receivedNull = 0;
             //add
-            StreamWriter sw = new StreamWriter(@"C:\Users\Vi\Desktop\test2data.txt");
-
+            
+            System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();//引用stopwatch物件
+            sw.Reset();//碼表歸零
+            sw.Start();//碼表開始計時
+            /**************/
+            /**************/
+            /***目標程式***/
+            /**************/
+            /**************/
+            
             while (true)
             {
                 
@@ -332,8 +340,15 @@ namespace USBHIDDRIVER.USB
                             byteCount += myRead.Length;
 
                             OpticalTouch.SensorData.RetrieveData(myRead);
-                            Console.WriteLine(count);
+                            
                             count++;
+                            if(count==100)
+                            { 
+                                sw.Stop();//碼錶停止
+                                //印出所花費的總豪秒數
+                                string result1 = sw.Elapsed.TotalMilliseconds.ToString();
+                                Console.WriteLine(result1);
+                            }
                             //Console.WriteLine(BitConverter.ToString(myRead));
 
                                 //Store received bytes
